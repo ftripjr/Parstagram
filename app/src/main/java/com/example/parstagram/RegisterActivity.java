@@ -10,6 +10,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
     EditText etUsername;
+    EditText etEmail;
     EditText etPassword;
     Button btnRegister;
 
@@ -19,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         etUsername = findViewById(R.id.etUsername);
+        etEmail = findViewById(R.id.);
         etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
     }
