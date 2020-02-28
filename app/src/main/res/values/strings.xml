@@ -4,4 +4,7 @@
     <string name="password_hint">Password</string>
     <string name="login_hint">Login</string>
     <string name="welcome">Welcome to Parstagram!</string>
+    <string name="submitBtnText">Submit</string>
+    <string name="submitCaptureText">Take a Picture!</string>
+    <string name="captionHint">Write a caption!</string>
 </resources>
