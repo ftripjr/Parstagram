@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etCaption;
     private Button btnCapture;
     private Button btnSubmit;
+    private Button btnLogOut;
     private ImageView ivPostImage;
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         etCaption = findViewById(R.id.etCaption);
         btnCapture = findViewById(R.id.btnCapture);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnLogOut = findViewById(R.id.btnLogOut);
         ivPostImage = findViewById(R.id.ivPostImage);
 
 //        queryPosts();
@@ -77,9 +79,25 @@ public class MainActivity extends AppCompatActivity {
                 savePost(caption, currUser, photoFile);
             }
         });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                Toast.makeText(MainActivity.this, "Log Out Successful!", Toast.LENGTH_LONG).show();
+                goLoginActivity();
+            }
+        });
     }
 
-    // Creates
+    private void goLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

@@ -50,8 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Please complete all fields", Toast.LENGTH_LONG).show();
                     return;
                 }
-
-
+                signUpUser(username, password, email);
                 goLoginActivity();
             }
         });
@@ -63,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
+        user.put("handle", username);
+
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
@@ -70,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.e(TAG, "Error Signing Up", e);
                     return;
                 }
+                else
                 Toast.makeText(RegisterActivity.this, "Signup Successful!", Toast.LENGTH_LONG).show();
                 goLoginActivity();
             }
