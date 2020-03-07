@@ -21,6 +21,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private List<Post> posts;
 
     public PostsAdapter(Context context, List<Post> allPosts) {
+        this.context = context;
+        this.posts = allPosts;
     }
 
     @NonNull
@@ -38,7 +40,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return posts.size();
+        return this.posts.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,16 +51,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         public ViewHolder (@NonNull View itemView)
         {
             super(itemView);
-            tvCaption.findViewById(R.id.tvCaption);
-            tvUsername.findViewById(R.id.tvUsername);
-            ivPostContent.findViewById(R.id.ivPostContent);
+            tvCaption = itemView.findViewById(R.id.tvCaption);
+            tvUsername = itemView.findViewById(R.id.tvUsername);
+            ivPostContent = itemView.findViewById(R.id.ivPostContent);
         }
 
         public void bind(Post post)
         {
             tvCaption.setText(post.getCaption());
-            tvCaption.setText(post.getUser().getUsername());
+            tvUsername.setText(post.getUser().getUsername());
             ParseFile img = post.getImage();
+
             if(img!= null)
             {
                 Glide.with(context).load(post.getImage().getUrl()).into(ivPostContent);
